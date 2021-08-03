@@ -20,21 +20,12 @@ let openConnection = async (event) => {
         }
     };
 
-    let response;
-
-    request(options, function (error, resp) {
-        if (error) {
-            response = {
-                statusCode: 400,
-                body: error
-            }
-        };
-        response = {
-            statusCode: 200,
-            body: resp.body
-        }
+    let response = request(options, function (error, resp) {
+        console.log('errot: ' + JSON.stringify(error));
+        console.log('resp: ' + JSON.stringify(resp.body));
+        return 'Hola mundo';
     });
-    
+
     return response;
 };
 
