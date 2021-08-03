@@ -20,13 +20,18 @@ let openConnection = async (event) => {
         }
     };
 
-    let response = request(options, function (error, resp) {
+    var response = 'Lambda function';
+
+    request(options, function (error, resp) {
         console.log('errot: ' + JSON.stringify(error));
         console.log('resp: ' + JSON.stringify(resp.body));
-        return 'Hola mundo';
+        response = 'Hola mundo';
+        console.log('uno');
     });
 
-    return response;
+    console.log('dos')
+
+    //return response;
 };
 
 exports.handler = openConnection;
