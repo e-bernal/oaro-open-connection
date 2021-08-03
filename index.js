@@ -22,7 +22,7 @@ let openConnection = async (event) => {
 
     var response = 'Lambda function';
 
-    request(options, function (error, resp) {
+    await request(options, function (error, resp) {
         console.log('errot: ' + JSON.stringify(error));
         console.log('resp: ' + JSON.stringify(resp.body));
         response = 'Hola mundo';
