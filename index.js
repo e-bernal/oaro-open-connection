@@ -25,7 +25,6 @@ const doRequest = (data) => new Promise((resolve, reject) => {
         var result = '';
         res.on('data', (d) => {
             result += d;
-            //process.stdout.write(d);
         });
         
         res.on('end', function () {
