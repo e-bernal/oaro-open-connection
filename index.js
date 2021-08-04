@@ -53,6 +53,8 @@ exports.handler = async (event) => {
     console.log('tokenFrom = ' + event.token)
     
     formData['tokenFrom'] = event.token;
+
+    console.log(formData);
     
     var response;
     await doRequest(querystring.stringify(formData))
