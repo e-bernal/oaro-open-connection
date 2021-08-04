@@ -11,7 +11,7 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       #- cd lib
-      - cd ..
+      #- cd ..
       - zip -r9 deployment_package.zip .
       #- zip -r9 deployment_package.zip .
       - zip -g deployment_package.zip index.js
