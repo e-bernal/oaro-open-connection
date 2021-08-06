@@ -3,7 +3,6 @@ const https = require('https');
 
 const formData = {
     userIp: "201.157.55.68",
-    uniqid: "agile001",
     callback: "https://develop.d2338pcgca4grp.amplifyapp.com/test"
 };
 
@@ -20,7 +19,6 @@ const options = {
 
 const doRequest = (data) => new Promise((resolve, reject) => {
     const req = https.request(options, res => {
-        console.log(`statusCode: ${res.statusCode}`);
         res.setEncoding('utf8');
         var result = '';
         res.on('data', (d) => {
@@ -28,7 +26,6 @@ const doRequest = (data) => new Promise((resolve, reject) => {
         });
         
         res.on('end', function () {
-            console.log('result: ' + result);
             resolve(JSON.parse(result));
         });
         
@@ -38,23 +35,17 @@ const doRequest = (data) => new Promise((resolve, reject) => {
     });
     
     req.on('error', (e) => {
-        console.log(e)
         reject(e.message);
     });
-    
-    console.log(data);
     
     req.write(data);
     
     req.end();
 })
 
-exports.handler = async (event) => {
-    console.log('tokenFrom = ' + event.token)
-    
+exports.handler = async (event) => {    
+    formData['uniqid'] = event.id;
     formData['tokenFrom'] = event.token;
-
-    console.log(formData);
     
     var response;
     await doRequest(querystring.stringify(formData))
